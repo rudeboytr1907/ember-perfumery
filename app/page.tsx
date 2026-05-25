@@ -418,7 +418,7 @@ export default function Home() {
                   />
                 </div>
 
-                <div className="mb-5 flex items-start justify-between gap-3">
+                <div className="mb-5 flex min-h-[92px] items-start justify-between gap-3">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#f3dfb8]">
                       Seçili koku
@@ -436,12 +436,12 @@ export default function Home() {
                   </span>
                 </div>
 
-                <p className="text-sm leading-6 text-stone-300">
+                <p className="min-h-[48px] text-sm leading-6 text-stone-300">
                   Stok, fiyat ve ürün detayı için WhatsApp üzerinden hızlıca
                   bilgi alabilirsiniz.
                 </p>
 
-                <div className="mt-4 rounded-lg border border-white/10 bg-black/15 px-4 py-3">
+                <div className="mt-4 min-h-[150px] rounded-lg border border-white/10 bg-black/15 px-4 py-3">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#f3dfb8]">
                     Notalar
                   </p>
