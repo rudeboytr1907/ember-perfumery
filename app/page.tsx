@@ -244,6 +244,7 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Tiziana-Terenzi/Kirke-32172.html",
     notes:
       "Üst: :Çarkıfelek meyvesi, Şeftali, armut. Orta: zambak. Alt: Misk, sandal ağacı, paçuli, vanilya, kediotu.",
+      price: "50 ML 750 TL",
   },
   {
     name: "Kenzo Homme Marine",
@@ -252,6 +253,7 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Kenzo/Kenzo-Homme-Marine-80042.html",
     notes:
       "Üst: :deniz notaları. Orta: ylang ylang. Alt: Misk, sandal ağacı.",
+      price: "50 ML 600 TL",
   },
   {
     name: "Creed Aventus Absolu",
@@ -260,6 +262,7 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Creed/Absolu-Aventus-2023-84112.html",
     notes:
       "Üst: :greyfurt, bergamot, pembe biber,ananas. Orta: zencefil, tarçın, limon, gül. Alt:paçuli,vetiver,meşe yosunu,ambroxan,tonka.",
+      price: "50 ML 600 TL",
   },
 ];
 
