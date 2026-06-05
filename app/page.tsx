@@ -237,6 +237,30 @@ const perfumes: Perfume[] = [
       "Üst: tuz, ozonik notalar, su notaları, mersin, bergamot. Orta: deniz notaları, tuz, ylang-ylang, portakal çiçeği. Alt: ambergris, yosun, beyaz misk, meşe yosunu, paçuli.",
     price: "50 ML 700 TL",
   },
+  {
+    name: "Tiziana Terenzi Kirke",
+    gender: "Unisex",
+    fragrantica:
+      "https://www.fragrantica.com/perfume/Tiziana-Terenzi/Kirke-32172.html",
+    notes:
+      "Üst: :Çarkıfelek meyvesi, Şeftali, armut. Orta: zambak. Alt: Misk, sandal ağacı, paçuli, vanilya, kediotu.",
+  },
+  {
+    name: "Kenzo Homme Marine",
+    gender: "Erkek",
+    fragrantica:
+      "https://www.fragrantica.com/perfume/Kenzo/Kenzo-Homme-Marine-80042.html",
+    notes:
+      "Üst: :deniz notaları. Orta: ylang ylang. Alt: Misk, sandal ağacı.",
+  },
+  {
+    name: "Creed Aventus Absolu",
+    gender: "Erkek",
+    fragrantica:
+      "https://www.fragrantica.com/perfume/Creed/Absolu-Aventus-2023-84112.html",
+    notes:
+      "Üst: :greyfurt, bergamot, pembe biber,ananas. Orta: zencefil, tarçın, limon, gül. Alt:paçuli,vetiver,meşe yosunu,ambroxan,tonka.",
+  },
 ];
 
 const perfumeImages: Record<string, string> = {
@@ -276,6 +300,12 @@ const perfumeImages: Record<string, string> = {
   "Tom Ford Bitter Peach": "/perfumes/tom-ford-bitter-peach.png",
   "Lorenzo Pazzaglia Black Sea":
     "/perfumes/lorenzo-pazzaglia-black-sea.png",
+  "Tiziana Terenzi Kirke" :
+    "/perfumes/tiziana-terenzi-kirke.png",
+  "Kenzo Homme Marine":
+  "/perfumes/kenzo-homme-marine.png",
+  "Creed Aventus Absolu":
+  "/perfumes/creed-aventus-absolu.png",    
 };
 
 const filters: Array<Gender | "Tümü"> = ["Tümü", "Kadın", "Erkek", "Unisex"];
@@ -418,7 +448,7 @@ export default function Home() {
                   />
                 </div>
 
-                <div className="mb-5 flex min-h-[92px] items-start justify-between gap-3">
+                <div className="mb-5 flex items-start justify-between gap-3">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#f3dfb8]">
                       Seçili koku
@@ -436,12 +466,12 @@ export default function Home() {
                   </span>
                 </div>
 
-                <p className="min-h-[48px] text-sm leading-6 text-stone-300">
+                <p className="text-sm leading-6 text-stone-300">
                   Stok, fiyat ve ürün detayı için WhatsApp üzerinden hızlıca
                   bilgi alabilirsiniz.
                 </p>
 
-                <div className="mt-4 min-h-[150px] rounded-lg border border-white/10 bg-black/15 px-4 py-3">
+                <div className="mt-4 rounded-lg border border-white/10 bg-black/15 px-4 py-3">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#f3dfb8]">
                     Notalar
                   </p>
