@@ -11,6 +11,7 @@ type Perfume = {
   notes: string;
   price?: string;
   isOutOfStock?: boolean; 
+  isPreOrder?: boolean; // Ön sipariş alanı eklendi
 };
 
 const whatsappNumber = "905382982055";
@@ -22,7 +23,8 @@ const perfumes: Perfume[] = [
     fragrantica:
       "https://www.fragrantica.com/perfume/Hugo-Boss/Boss-The-Scent-Elixir-For-Her-88880.html",
     notes: "Üst: pembe biber. Orta: belladonna. Alt: ambergris.",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "By Kilian Black Phantom",
@@ -31,7 +33,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/By-Kilian/Black-Phantom-43632.html",
     notes:
       "Üst: rom. Orta: bitter çikolata, kahve, badem, heliotrope. Alt: karamel, şeker kamışı, sandal ağacı, vanilya, tonka, vetiver.",
-      isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Armani Si",
@@ -40,7 +43,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Giorgio-Armani/Si-18453.html",
     notes:
       "Üst: cassis. Orta: Mayıs gülü, frezya. Alt: vanilya, paçuli, odunsu notalar, ambroxan.",
-      isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Xerjoff Kind of Blue",
@@ -49,7 +53,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Xerjoff/Kind-of-Blue-16444.html",
     notes:
       "Notalar: aldehitler, pudralı notalar, karanfil, nergis, iris, portakal çiçeği, sandal ağacı, baharatlı notalar, gül, kakule.",
-      isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "YSL Libre Intense",
@@ -58,7 +63,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Yves-Saint-Laurent/Libre-Intense-62318.html",
     notes:
       "Üst: lavanta, mandalina, bergamot. Orta: lavanta, portakal çiçeği, yasemin sambac, orkide. Alt: Madagaskar vanilyası, tonka, ambergris, vetiver.",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "VS Bare",
@@ -66,7 +72,8 @@ const perfumes: Perfume[] = [
     fragrantica:
       "https://www.fragrantica.com/perfume/Victoria-s-Secret/Bare-75277.html",
     notes: "Notalar: Avustralya sandal ağacı, menekşe, mandalina.",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "MFK Gentle Fluidity Gold",
@@ -75,7 +82,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Maison-Francis-Kurkdjian/Gentle-Fluidity-Gold-53401.html",
     notes:
       "Üst: ardıç meyveleri, muskat. Orta: kişniş. Alt: vanilya, misk, karamel, amberwood.",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Paco Rabanne Olympea",
@@ -84,7 +92,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Rabanne/Olympea-31666.html",
     notes:
       "Üst: su yasemini, yeşil mandalina, zencefil çiçeği. Orta: vanilya, tuz. Alt: kaşmir ağacı, ambergris, sandal ağacı.",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Kenzo Homme EDP",
@@ -93,7 +102,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Kenzo/Kenzo-Homme-Eau-de-Parfum-35396.html",
     notes:
       "Üst: nane, narenciye, kakule. Orta: deniz notaları, adaçayı, baharatlar. Alt: sandal ağacı, vetiver, sedir, vanilya.",
-      isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Penhaligon's Violetta",
@@ -102,7 +112,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Penhaligon-s/Violetta-4035.html",
     notes:
       "Üst: sardunya, narenciye. Orta: menekşe. Alt: misk, sandal ağacı, sedir.",
-      isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Mancera Amorre Caffe",
@@ -111,7 +122,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Mancera/Amore-Caffe-87409.html",
     notes:
       "Üst: kahve, amaretto. Orta: dondurma, speculoos. Alt: esmer şeker, vanilya, ambergris.",
-      isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Gucci Intense Oud",
@@ -120,7 +132,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Gucci/Intense-Oud-32743.html",
     notes:
       "Üst: tütsü, ahududu, safran, armut. Orta: Şam gülü, misk, portakal çiçeği. Alt: öd ağacı, deri, paçuli, ambergris.",
-      isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Profumum Roma Acqua e Zucchero",
@@ -128,7 +141,8 @@ const perfumes: Perfume[] = [
     fragrantica:
       "https://www.fragrantica.com/perfume/Profumum-Roma/Acqua-e-Zucchero-3887.html",
     notes: "Notalar: vanilya, orman meyveleri, portakal çiçeği.",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Tom Ford Black Orchid",
@@ -137,7 +151,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Tom-Ford/Black-Orchid-1018.html",
     notes:
       "Üst: trüf, gardenya, siyah frenk üzümü, ylang-ylang, yasemin, bergamot, mandalina, Amalfi limonu. Orta: orkide, baharatlar, meyveli notalar, lotus. Alt: çikolata, paçuli, vanilya, tütsü, amber, sandal ağacı, vetiver, beyaz misk.",
-    isOutOfStock: true
+    isOutOfStock: true,
+    isPreOrder: true // Sadece Black Orchid için ön sipariş true yapıldı
   },
   {
     name: "Burberry Burberry Woman",
@@ -146,7 +161,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Burberry/Burberry-Women-818.html",
     notes:
       "Üst: şeftali, kayısı, armut, siyah frenk üzümü, yeşil elma. Orta: sandal ağacı, yasemin, yosun. Alt: vanilya, sedir, misk.",
-      isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Penhaligon's Endymion",
@@ -155,7 +171,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Penhaligon-s/Endymion-5674.html",
     notes:
       "Üst: lavanta, bergamot, adaçayı, mandalina. Orta: kahve, sardunya. Alt: deri, kakule, sandal ağacı, vetiver, muskat, mür, karabiber, misk, tütsü.",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Creed Green Irish Tweed",
@@ -164,6 +181,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Creed/Green-Irish-Tweed-474.html",
     notes:
       "Üst: iris, mine çiçeği. Orta: menekşe yaprağı. Alt: ambergris, sandal ağacı.",
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Penhaligon's Tralala",
@@ -172,7 +191,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Penhaligon-s/Tralala-23081.html",
     notes:
       "Üst: viski, menekşe, safran, aldehitler. Orta: deri, tütsü, karanfil, tuberoz. Alt: vanilya, misk, paçuli, vetiver.",
-      isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Acqua di Parma Fico di Amalfi",
@@ -181,7 +201,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Acqua-di-Parma/Acqua-di-Parma-Blu-Mediterraneo-Fico-di-Amalfi-1687.html",
     notes:
       "Üst: greyfurt, bergamot, citron, limon. Orta: incir nektarı, yasemin, pembe biber. Alt: incir ağacı, sedir, benzoin.",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Tom Ford Mandarino di Amalfi",
@@ -190,7 +211,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Tom-Ford/Mandarino-di-Amalfi-25481.html",
     notes:
       "Üst: limon, greyfurt, nane, fesleğen, tarhun, siyah frenk üzümü. Orta: portakal çiçeği, yasemin, adaçayı, shiso, kişniş, karabiber. Alt: misk, vetiver, amber, labdanum.",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "By Kilian Love Don't be Shy Extreme",
@@ -199,7 +221,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/By-Kilian/Love-Don-t-Be-Shy-Extreme-64761.html",
     notes:
       "Üst: neroli, bergamot. Orta: portakal çiçeği, Bulgar gülü. Alt: marshmallow, vanilya, misk, nar.",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Diptyque Olene",
@@ -208,7 +231,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Diptyque/Olene-Eau-de-Toilette-3960.html",
     notes:
       "Üst: nergis, hanımeli. Orta: yasemin, morsalkım. Alt: beyaz çiçekler, yeşil notalar.",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "By Kilian Vodka on the Rocks",
@@ -217,7 +241,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/By-Kilian/Vodka-on-the-Rocks-23899.html",
     notes:
       "Üst: aldehitler, kişniş, kakule. Orta: ravent, müge, pembe gül. Alt: ambroxan, meşe yosunu, sandal ağacı.",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Tom Ford Cherry Smoke",
@@ -226,7 +251,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Tom-Ford/Cherry-Smoke-78578.html",
     notes:
       "Üst: vişne, safran. Orta: deri, osmanthus, zeytin, kayısı. Alt: duman, odunsu notalar, cypriol.",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "By Kilian Blue Moon Ginger Dash",
@@ -235,7 +261,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/By-Kilian/Blue-Moon-Ginger-Dash-79731.html",
     notes:
       "Üst: limon, calone, nane, aldehitler. Orta: votka, zencefil. Alt: ambroxan, beyaz misk.",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Versace Eros",
@@ -243,7 +270,8 @@ const perfumes: Perfume[] = [
     fragrantica: "https://www.fragrantica.com/perfume/Versace/Eros-16657.html",
     notes:
       "Üst: nane, yeşil elma, limon. Orta: tonka fasulyesi, ambroxan, sardunya. Alt: Madagaskar vanilyası, sedir, vetiver, meşe yosunu.",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Tom Ford Bitter Peach",
@@ -253,7 +281,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: şeftali, kan portakalı, kakule, heliotrope. Orta: rom, konyak, davana, yasemin. Alt: vanilya, paçuli, tonka, sandal ağacı, benzoin, cashmeran, labdanum, styrax, vetiver.",
     price: "50 ML 700 TL",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Lorenzo Pazzaglia Black Sea",
@@ -263,7 +292,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: tuz, ozonik notalar, su notaları, mersin, bergamot. Orta: deniz notaları, tuz, ylang-ylang, portakal çiçeği. Alt: ambergris, yosun, beyaz misk, meşe yosunu, paçuli.",
     price: "50 ML 700 TL",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Tiziana Terenzi Kirke",
@@ -273,7 +303,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: :Çarkıfelek meyvesi, Şeftali, armut. Orta: zambak. Alt: Misk, sandal ağacı, paçuli, vanilya, kediotu.",
     price: "50 ML 750 TL",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Kenzo Homme Marine",
@@ -283,7 +314,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: :deniz notaları. Orta: ylang ylang. Alt: Misk, sandal ağacı.",
     price: "50 ML 600 TL",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Creed Aventus Absolu",
@@ -293,7 +325,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: :greyfurt, bergamot, pembe biber,ananas. Orta: zencefil, tarçın, limon, gül. Alt:paçuli,vetiver,meşe yosunu,ambroxan,tonka.",
     price: "50 ML 600 TL",
-    isOutOfStock: false
+    isOutOfStock: false,
+    isPreOrder: false
   },
 ];
 
@@ -465,15 +498,17 @@ export default function Home() {
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {filteredPerfumes.map((perfume) => {
-            const message = encodeURIComponent(
-              `Merhaba, ${perfume.name} hakkında bilgi almak istiyorum.`
-            );
+            const baseMessage = perfume.isPreOrder 
+              ? `Merhaba, ön siparişe açık olan ${perfume.name} ürünü için ön sipariş oluşturmak istiyorum.`
+              : `Merhaba, ${perfume.name} hakkında bilgi almak istiyorum.`;
+
+            const message = encodeURIComponent(baseMessage);
 
             return (
               <article
                 key={perfume.name}
                 className={`flex min-h-[470px] flex-col rounded-lg border border-white/10 bg-white/[0.045] p-5 shadow-xl shadow-black/12 transition ${
-                  perfume.isOutOfStock ? "opacity-60" : "hover:border-[#e2543f]/70"
+                  perfume.isOutOfStock && !perfume.isPreOrder ? "opacity-60" : "hover:border-[#e2543f]/70"
                 }`}
               >
                 <div className="relative mb-5 flex h-48 items-center justify-center rounded-lg border border-white/10 bg-[#f3dfb8]/8 p-4">
@@ -482,11 +517,15 @@ export default function Home() {
                     alt={`${perfume.name} parfüm şişesi`}
                     className="max-h-full w-full object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)]"
                   />
-                  {perfume.isOutOfStock && (
+                  {perfume.isPreOrder ? (
+                    <span className="absolute rounded bg-amber-500 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-black shadow-lg">
+                      Ön Sipariş
+                    </span>
+                  ) : perfume.isOutOfStock ? (
                     <span className="absolute rounded bg-red-600 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-lg">
                       Tükendi
                     </span>
-                  )}
+                  ) : null}
                 </div>
 
                 <div className="mb-5 flex items-start justify-between gap-3">
@@ -522,7 +561,7 @@ export default function Home() {
                 </div>
 
                 <div className="mt-auto pt-7">
-                  <p className={`text-2xl font-bold ${perfume.isOutOfStock ? "text-stone-500 line-through" : "text-[#f3dfb8]"}`}>
+                  <p className={`text-2xl font-bold ${perfume.isOutOfStock && !perfume.isPreOrder ? "text-stone-500 line-through" : "text-[#f3dfb8]"}`}>
                     {perfume.price ?? "50 ML 600 TL"}
                   </p>
                   <div className="mt-5 grid grid-cols-2 gap-3">
@@ -533,7 +572,15 @@ export default function Home() {
                     >
                       İncele
                     </a>
-                    {perfume.isOutOfStock ? (
+                    {perfume.isPreOrder ? (
+                      <a
+                        href={`https://wa.me/${whatsappNumber}?text=${message}`}
+                        target="_blank"
+                        className="rounded-lg bg-amber-500 px-4 py-3 text-center text-sm font-bold text-amber-950 transition hover:bg-amber-400"
+                      >
+                        Ön Sipariş
+                      </a>
+                    ) : perfume.isOutOfStock ? (
                       <button
                         disabled
                         className="cursor-not-allowed rounded-lg bg-stone-700 px-4 py-3 text-center text-sm font-bold text-stone-400"
