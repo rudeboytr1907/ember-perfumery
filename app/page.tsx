@@ -335,6 +335,7 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Tom-Ford/Lost-Cherry-51411.html",
     notes:
       "Üst: badem, siyah vişne, vişne likörü. Orta: ekşi vişne, siyah erik, Türk gülü, zambak. Alt: vanilya, tonka fasulyesi, tarçın, sandal ağacı, karanfil, vetiver.",
+    price: "50 ML 750 TL",
     isOutOfStock: true,
     isPreOrder: true 
   },
@@ -345,6 +346,7 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Issey-Miyake/Le-Sel-d-Issey-95642.html",
     notes:
       "Üst: deniz tuzu, zencefil. Orta: deniz yosunu, vetiver. Alt: sedir ağacı, meşe yosunu.",
+    price: "50 ML 600 TL",  
     isOutOfStock: true,
     isPreOrder: true
   },
@@ -355,6 +357,7 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Amouage/Sindbad-116626.html",
     notes:
       "Üst: bergamot, mandalina, tarçın. Orta: tütsü, sardunya, gül. Alt: ambergris, sandal ağacı, meşe yosunu, deri.",
+    price: "50 ML 750 TL",
     isOutOfStock: true,
     isPreOrder: true
   },
@@ -365,6 +368,7 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Victoria-s-Secret/Tease-Eau-de-Parfum-50825.html",
     notes:
       "Üst: armut, mandalina, litchi, kırmızı elma. Orta: gardenya, tatlı bezelye, yasemin, frezya, manolya. Alt: vanilya, benzoin, misk, çikolata, amber, sandal ağacı.",
+    price: "50 ML 600 TL",
     isOutOfStock: true,
     isPreOrder: true
   },
@@ -415,7 +419,7 @@ const perfumeImages: Record<string, string> = {
     "/perfumes/creed-aventus-absolu.png",  
   "Tom Ford Lost Cherry":
     "/perfumes/tom_ford_lost_cherry.png",  
-  "Amouage Sindbad":
+  "Amouage":
     "/perfumes/sindbad_amouage.png",
   "Issey Miyake Le Sel d'Issey":
     "/perfumes/le_sel_dissey.png",
