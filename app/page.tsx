@@ -328,6 +328,46 @@ const perfumes: Perfume[] = [
     isOutOfStock: false,
     isPreOrder: false
   },
+   {
+    name: "Tom Ford Lost Cherry",
+    gender: "Unisex",
+    fragrantica:
+      "https://www.fragrantica.com/perfume/Tom-Ford/Lost-Cherry-51411.html",
+    notes:
+      "Üst: badem, siyah vişne, vişne likörü. Orta: ekşi vişne, siyah erik, Türk gülü, zambak. Alt: vanilya, tonka fasulyesi, tarçın, sandal ağacı, karanfil, vetiver.",
+    isOutOfStock: true,
+    isPreOrder: true 
+  },
+  {
+    name: "Issey Miyake Le Sel d'Issey",
+    gender: "Erkek",
+    fragrantica:
+      "https://www.fragrantica.com/perfume/Issey-Miyake/Le-Sel-d-Issey-95642.html",
+    notes:
+      "Üst: deniz tuzu, zencefil. Orta: deniz yosunu, vetiver. Alt: sedir ağacı, meşe yosunu.",
+    isOutOfStock: true,
+    isPreOrder: true
+  },
+  {
+    name: "Amouage Sindbad",
+    gender: "Unisex",
+    fragrantica:
+      "https://www.fragrantica.com/perfume/Amouage/Sindbad-116626.html",
+    notes:
+      "Üst: bergamot, mandalina, tarçın. Orta: tütsü, sardunya, gül. Alt: ambergris, sandal ağacı, meşe yosunu, deri.",
+    isOutOfStock: true,
+    isPreOrder: true
+  },
+  {
+    name: "Victoria's Secret Tease",
+    gender: "Kadın",
+    fragrantica:
+      "https://www.fragrantica.com/perfume/Victoria-s-Secret/Tease-Eau-de-Parfum-50825.html",
+    notes:
+      "Üst: armut, mandalina, litchi, kırmızı elma. Orta: gardenya, tatlı bezelye, yasemin, frezya, manolya. Alt: vanilya, benzoin, misk, çikolata, amber, sandal ağacı.",
+    isOutOfStock: true,
+    isPreOrder: true
+  },
 ];
 
 const perfumeImages: Record<string, string> = {
@@ -372,7 +412,15 @@ const perfumeImages: Record<string, string> = {
   "Kenzo Homme Marine":
     "/perfumes/kenzo-homme-marine.png",
   "Creed Aventus Absolu":
-    "/perfumes/creed-aventus-absolu.png",    
+    "/perfumes/creed-aventus-absolu.png",  
+  "Tom Ford Lost Cherry":
+    "/perfumes/tom_ford_lost_cherry.png",  
+  "Sindbad Amouage":
+    "/perfumes/sindbad_amouage.png",
+  "Issey Miyake Le Sel d'Issey":
+    "/perfumes/le_sel_dissey.png",
+  "Victoria's Secret Tease":
+    "/perfumes/vs_tease.png",      
 };
 
 const filters: Array<Gender | "Tümü"> = ["Tümü", "Kadın", "Erkek", "Unisex"];
