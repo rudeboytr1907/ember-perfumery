@@ -419,8 +419,8 @@ const perfumeImages: Record<string, string> = {
     "/perfumes/creed-aventus-absolu.png",  
   "Tom Ford Lost Cherry":
     "/perfumes/tom_ford_lost_cherry.png",  
-  "Amouage":
-    "/perfumes/sindbad_amouage.png",
+  "Amouage Sindbad":
+    "/perfumes/amouage_sindbad.png",
   "Issey Miyake Le Sel d'Issey":
     "/perfumes/le_sel_dissey.png",
   "Victoria's Secret Tease":
