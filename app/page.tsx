@@ -144,16 +144,7 @@ const perfumes: Perfume[] = [
     isOutOfStock: false,
     isPreOrder: false
   },
-  {
-    name: "Tom Ford Black Orchid",
-    gender: "Unisex",
-    fragrantica:
-      "https://www.fragrantica.com/perfume/Tom-Ford/Black-Orchid-1018.html",
-    notes:
-      "Üst: trüf, gardenya, siyah frenk üzümü, ylang-ylang, yasemin, bergamot, mandalina, Amalfi limonu. Orta: orkide, baharatlar, meyveli notalar, lotus. Alt: çikolata, paçuli, vanilya, tütsü, amber, sandal ağacı, vetiver, beyaz misk.",
-    isOutOfStock: true,
-    isPreOrder: true // Sadece Black Orchid için ön sipariş true yapıldı
-  },
+  
   {
     name: "Burberry Burberry Woman",
     gender: "Kadın",
@@ -253,6 +244,15 @@ const perfumes: Perfume[] = [
       "Üst: vişne, safran. Orta: deri, osmanthus, zeytin, kayısı. Alt: duman, odunsu notalar, cypriol.",
     isOutOfStock: false,
     isPreOrder: false
+  },
+  {
+    name: "Tom Ford Beau de Jour",
+    gender: "Erkek",
+    fragrantica:
+      "https://www.fragrantica.com/perfume/Tom-Ford/Beau-De-Jour-Eau-de-Parfum-59064.html",
+    notes:
+      "Üst: Lavanta, Lavanta ekstratı. Orta: Meşe Yosunu, Biberiye, Nane, Reyhan, Sardunya. Alt: Paçuli, Amber.",
+    isPreOrder: false 
   },
   {
     name: "By Kilian Blue Moon Ginger Dash",
@@ -372,6 +372,16 @@ const perfumes: Perfume[] = [
     isOutOfStock: true,
     isPreOrder: true
   },
+  {
+    name: "Tom Ford Black Orchid",
+    gender: "Unisex",
+    fragrantica:
+      "https://www.fragrantica.com/perfume/Tom-Ford/Black-Orchid-1018.html",
+    notes:
+      "Üst: trüf, gardenya, siyah frenk üzümü, ylang-ylang, yasemin, bergamot, mandalina, Amalfi limonu. Orta: orkide, baharatlar, meyveli notalar, lotus. Alt: çikolata, paçuli, vanilya, tütsü, amber, sandal ağacı, vetiver, beyaz misk.",
+    isOutOfStock: true,
+    isPreOrder: true // Sadece Black Orchid için ön sipariş true yapıldı
+  },
 ];
 
 const perfumeImages: Record<string, string> = {
@@ -424,7 +434,9 @@ const perfumeImages: Record<string, string> = {
   "Issey Miyake Le Sel d'Issey":
     "/perfumes/le_sel_dissey.png",
   "Victoria's Secret Tease":
-    "/perfumes/vs_tease.png",      
+    "/perfumes/vs_tease.png",
+  "Tom Ford Beau de Jour":
+    "/perfumes/beau_de_jour.png",        
 };
 
 const filters: Array<Gender | "Tümü"> = ["Tümü", "Kadın", "Erkek", "Unisex"];
