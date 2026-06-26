@@ -306,6 +306,17 @@ const perfumes: Perfume[] = [
     isOutOfStock: false,
     isPreOrder: false
   },
+   {
+    name: "Serge Lutens Chergui",
+    gender: "Unisex",
+    fragrantica:
+      "https://www.fragrantica.com/perfume/Serge-Lutens/Chergui-2762.html",
+    notes:
+      "Tütün Yaprağı, Bal, Amber, Tütsü, Sandal Ağacı, iris, Misk, Gül.",
+    price: "50 ML 600 TL",
+    isOutOfStock: false,
+    isPreOrder: false
+  },
   {
     name: "Kenzo Homme Marine",
     gender: "Erkek",
@@ -436,7 +447,9 @@ const perfumeImages: Record<string, string> = {
   "Victoria's Secret Tease":
     "/perfumes/vs_tease.png",
   "Tom Ford Beau de Jour":
-    "/perfumes/beau_de_jour.png",        
+    "/perfumes/beau_de_jour.png",
+  "Serge Lutens Chergui":
+  "/perfumes/chergui.png",          
 };
 
 const filters: Array<Gender | "Tümü"> = ["Tümü", "Kadın", "Erkek", "Unisex"];
