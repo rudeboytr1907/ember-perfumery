@@ -292,8 +292,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: tuz, ozonik notalar, su notaları, mersin, bergamot. Orta: deniz notaları, tuz, ylang-ylang, portakal çiçeği. Alt: ambergris, yosun, beyaz misk, meşe yosunu, paçuli.",
     price: "50 ML 700 TL",
-    isOutOfStock: false,
-    isPreOrder: false
+    isOutOfStock: true,
+    isPreOrder: true
   },
   {
     name: "Tiziana Terenzi Kirke",
