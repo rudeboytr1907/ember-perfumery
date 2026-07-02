@@ -236,6 +236,16 @@ const perfumes: Perfume[] = [
     isPreOrder: false
   },
   {
+    name: "Mancera Tonka Cola",
+    gender: "Unisex",
+    fragrantica:
+      "http://fragrantica.com/perfume/Mancera/Tonka-Cola-76893.html",
+    notes:
+      "Üst: Tarçın, Kiraz, Sicilya limonu, Hindistan cevizi. Orta: Coca-Cola, Paçuli yaprağı, Portakal çiçeği. Alt: Tonka fasulyesi, Vanilya, Benzoin, Labdanum.",
+    isOutOfStock: false,
+    isPreOrder: false
+  },
+  {
     name: "Tom Ford Cherry Smoke",
     gender: "Unisex",
     fragrantica:
@@ -292,8 +302,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: tuz, ozonik notalar, su notaları, mersin, bergamot. Orta: deniz notaları, tuz, ylang-ylang, portakal çiçeği. Alt: ambergris, yosun, beyaz misk, meşe yosunu, paçuli.",
     price: "50 ML 700 TL",
-    isOutOfStock: true,
-    isPreOrder: true
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Tiziana Terenzi Kirke",
@@ -449,7 +459,9 @@ const perfumeImages: Record<string, string> = {
   "Tom Ford Beau de Jour":
     "/perfumes/beau_de_jour.png",
   "Serge Lutens Chergui":
-  "/perfumes/chergui.png",          
+  "/perfumes/chergui.png",     
+  "Mancera Tonka Cola":
+  "/perfumes/tonka_cola.png",       
 };
 
 const filters: Array<Gender | "Tümü"> = ["Tümü", "Kadın", "Erkek", "Unisex"];
