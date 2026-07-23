@@ -479,11 +479,11 @@ const perfumeImages: Record<string, string> = {
   "Victoria's Secret Tease":
     "/perfumes/vs_tease.png",
   "Tom Ford Beau de Jour":
-    "/ember-logo.png",
+    "/perfumes/beaudejour.png",
   "Serge Lutens Chergui":
-  "/ember-logo.png",     
+  "/perfumes/chergui.png",     
   "Mancera Tonka Cola":
-  "/ember-logo.png",
+  "/perfumes/tonka_cola.png",
   "Hermès Terre d'Hermès": "/perfumes/terre.png",
   "Dior Sauvage Elixir": "/perfumes/sauvage_elixir.png",
 };
