@@ -425,6 +425,46 @@ const perfumes: Perfume[] = [
     isOutOfStock: false,
     isPreOrder: false
   },
+  {
+    name: "Dior J'adore",
+    gender: "Kadın",
+    fragrantica:
+      "https://www.fragrantica.com/perfume/Dior/J-adore-210.html",
+    notes: "Üst: Armut, Kavun, Manolya, Şeftali, Bergamot. Orta: Yasemin, Tüberoz, Frezya, Gül, Orkide, Menekşe, Erik. Alt: Misk, Vanilya, Sedir, Böğürtlen.",
+    price: "50 ML 600 TL",
+    isOutOfStock: false,
+    isPreOrder: false
+  },
+  {
+    name: "Maison Martin Margiela Lazy Sunday Morning",
+    gender: "Unisex",
+    fragrantica:
+      "https://www.fragrantica.com/perfume/Maison-Martin-Margiela/Lazy-Sunday-Morning-20542.html",
+    notes: "Üst: Aldehitler, Vadideki Zambak, Armut. Orta: Gül, İris, Portakal Çiçeği. Alt: Beyaz Misk, Ambrette, Paçuli.",
+    price: "50 ML 600 TL",
+    isOutOfStock: false,
+    isPreOrder: false
+  },
+  {
+    name: "Rasasi Rumz Al Rasasi 9325 Pour Lui",
+    gender: "Erkek",
+    fragrantica:
+      "https://www.fragrantica.com/perfume/Rasasi/Rumz-Al-Rasasi-9325-Pour-Lui-45687.html",
+    notes: "Üst: Ananas, Lime, Limon, Bergamot, Karabiber. Orta: Yasemin, Vadideki Zambak, Frezya. Alt: Ambergis, Sedir, Deri, Beyaz Misk, Meşe Yosunu.",
+    price: "50 ML 600 TL",
+    isOutOfStock: false,
+    isPreOrder: false
+  },
+  {
+    name: "Xerjoff 1861 Renaissance",
+    gender: "Unisex",
+    fragrantica:
+      "https://www.fragrantica.com/perfume/Xerjoff/XJ-1861-Renaissance-12126.html",
+    notes: "Üst: Amalfi Limonu, Mandalina, Bergamot, Petitgrain. Orta: Nane, Vadideki Zambak, Gül. Alt: Misk, Virjinya Sediri, Paçuli, Amber.",
+    price: "50 ML 600 TL",
+    isOutOfStock: false,
+    isPreOrder: false
+  },
 ];
 
 const perfumeImages: Record<string, string> = {
@@ -486,6 +526,10 @@ const perfumeImages: Record<string, string> = {
   "/perfumes/tonka_cola.png",
   "Hermès Terre d'Hermès": "/perfumes/terre.png",
   "Dior Sauvage Elixir": "/perfumes/sauvage_elixir.png",
+  "Dior J'adore": "/perfumes/jadore.png",
+  "Maison Martin Margiela Lazy Sunday Morning": "/perfumes/sundaymorning.png",
+  "Rasasi Rumz Al Rasasi 9325 Pour Lui": "/perfumes/zebra.png",
+  "Xerjoff 1861 Renaissance": "/perfumes/1861.png",
 };
 
 const filters: Array<Gender | "Tümü"> = ["Tümü", "Kadın", "Erkek", "Unisex"];
