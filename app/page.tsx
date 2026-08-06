@@ -13,6 +13,9 @@ type Perfume = {
   price?: string;
   isOutOfStock?: boolean; 
   isPreOrder?: boolean; // Ön sipariş alanı eklendi
+  isNew?: boolean; // Yeni ürün alanı eklendi
+  isEditorsPick?: boolean; // Parfümörün tavsiyesi
+  isBestSeller?: boolean; // Çok satan
 };
 
 const whatsappNumber = "905382982055";
@@ -45,7 +48,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: cassis. Orta: Mayıs gülü, frezya. Alt: vanilya, paçuli, odunsu notalar, ambroxan.",
     isOutOfStock: false,
-    isPreOrder: false
+    isPreOrder: false,
+    isEditorsPick: true
   },
   {
     name: "Xerjoff Kind of Blue",
@@ -65,7 +69,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: lavanta, mandalina, bergamot. Orta: lavanta, portakal çiçeği, yasemin sambac, orkide. Alt: Madagaskar vanilyası, tonka, ambergris, vetiver.",
     isOutOfStock: false,
-    isPreOrder: false
+    isPreOrder: false,
+    isEditorsPick: true
   },
   {
     name: "VS Bare",
@@ -74,7 +79,8 @@ const perfumes: Perfume[] = [
       "https://www.fragrantica.com/perfume/Victoria-s-Secret/Bare-75277.html",
     notes: "Notalar: Avustralya sandal ağacı, menekşe, mandalina.",
     isOutOfStock: false,
-    isPreOrder: false
+    isPreOrder: false,
+    isEditorsPick: true
   },
   {
     name: "MFK Gentle Fluidity Gold",
@@ -164,7 +170,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: lavanta, bergamot, adaçayı, mandalina. Orta: kahve, sardunya. Alt: deri, kakule, sandal ağacı, vetiver, muskat, mür, karabiber, misk, tütsü.",
     isOutOfStock: false,
-    isPreOrder: false
+    isPreOrder: false,
+    isEditorsPick: true
   },
   {
     name: "Creed Green Irish Tweed",
@@ -194,7 +201,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: greyfurt, bergamot, citron, limon. Orta: incir nektarı, yasemin, pembe biber. Alt: incir ağacı, sedir, benzoin.",
     isOutOfStock: false,
-    isPreOrder: false
+    isPreOrder: false,
+    isEditorsPick: true
   },
   {
     name: "Tom Ford Mandarino di Amalfi",
@@ -234,7 +242,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: aldehitler, kişniş, kakule. Orta: ravent, müge, pembe gül. Alt: ambroxan, meşe yosunu, sandal ağacı.",
     isOutOfStock: false,
-    isPreOrder: false
+    isPreOrder: false,
+    isEditorsPick: true
   },
   {
     name: "Mancera Tonka Cola",
@@ -254,7 +263,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: vişne, safran. Orta: deri, osmanthus, zeytin, kayısı. Alt: duman, odunsu notalar, cypriol.",
     isOutOfStock: false,
-    isPreOrder: false
+    isPreOrder: false,
+    isEditorsPick: true
   },
   {
     name: "Tom Ford Beau de Jour",
@@ -273,7 +283,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: limon, calone, nane, aldehitler. Orta: votka, zencefil. Alt: ambroxan, beyaz misk.",
     isOutOfStock: false,
-    isPreOrder: false
+    isPreOrder: false,
+    isEditorsPick: true
   },
   {
     name: "Versace Eros",
@@ -303,8 +314,9 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: tuz, ozonik notalar, su notaları, mersin, bergamot. Orta: deniz notaları, tuz, ylang-ylang, portakal çiçeği. Alt: ambergris, yosun, beyaz misk, meşe yosunu, paçuli.",
     price: "50 ML 700 TL",
-    isOutOfStock: false,
-    isPreOrder: false
+    isOutOfStock: true,
+    isPreOrder: true,
+    isEditorsPick: true
   },
   {
     name: "Tiziana Terenzi Kirke",
@@ -348,7 +360,8 @@ const perfumes: Perfume[] = [
       "Üst: :greyfurt, bergamot, pembe biber,ananas. Orta: zencefil, tarçın, limon, gül. Alt:paçuli,vetiver,meşe yosunu,ambroxan,tonka.",
     price: "50 ML 600 TL",
     isOutOfStock: false,
-    isPreOrder: false
+    isPreOrder: false,
+    isEditorsPick: true
   },
    {
     name: "Tom Ford Lost Cherry",
@@ -369,8 +382,9 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: deniz tuzu, zencefil. Orta: deniz yosunu, vetiver. Alt: sedir ağacı, meşe yosunu.",
     price: "50 ML 600 TL",  
-    isOutOfStock: true,
-    isPreOrder: true
+    isOutOfStock: false,
+    isPreOrder: false,
+    isNew: true
   },
   {
     name: "Amouage Sindbad",
@@ -380,8 +394,9 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: bergamot, mandalina, tarçın. Orta: tütsü, sardunya, gül. Alt: ambergris, sandal ağacı, meşe yosunu, deri.",
     price: "50 ML 750 TL",
-    isOutOfStock: true,
-    isPreOrder: true
+    isOutOfStock: false,
+    isPreOrder: false,
+    isNew: true
   },
   {
     name: "Victoria's Secret Tease",
@@ -391,8 +406,9 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: armut, mandalina, litchi, kırmızı elma. Orta: gardenya, tatlı bezelye, yasemin, frezya, manolya. Alt: vanilya, benzoin, misk, çikolata, amber, sandal ağacı.",
     price: "50 ML 600 TL",
-    isOutOfStock: true,
-    isPreOrder: true
+    isOutOfStock: false,
+    isPreOrder: false,
+    isNew: true
   },
   {
     name: "Tom Ford Black Orchid",
@@ -402,7 +418,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: trüf, gardenya, siyah frenk üzümü, ylang-ylang, yasemin, bergamot, mandalina, Amalfi limonu. Orta: orkide, baharatlar, meyveli notalar, lotus. Alt: çikolata, paçuli, vanilya, tütsü, amber, sandal ağacı, vetiver, beyaz misk.",
     isOutOfStock: true,
-    isPreOrder: true // Sadece Black Orchid için ön sipariş true yapıldı
+    isPreOrder: true,
+    isEditorsPick: true
   },
   {
     name: "Hermès Terre d'Hermès",
@@ -412,7 +429,8 @@ const perfumes: Perfume[] = [
     notes: "Üst: Portakal, Greyfurt. Orta: Karabiber, Sardunya, Çakmak Taşı. Alt: Vetiver, Sedir, Paçuli, Benzoin.",
     price: "50 ML 600 TL",
     isOutOfStock: false,
-    isPreOrder: false
+    isPreOrder: false,
+    isNew: true
   },
   
    {
@@ -423,7 +441,9 @@ const perfumes: Perfume[] = [
     notes: "Üst: Nutmeg, Tarçın, Kakule, Greyfurt. Orta: Lavanta. Alt: Meyan Kökü, Sandal Ağacı, Amber, Paçuli, Haiti Vetiveri.",
     price: "50 ML 650 TL",
     isOutOfStock: false,
-    isPreOrder: false
+    isPreOrder: false,
+    isNew: true,
+    isEditorsPick: true
   },
   {
     name: "Dior J'adore",
@@ -433,7 +453,9 @@ const perfumes: Perfume[] = [
     notes: "Üst: Armut, Kavun, Manolya, Şeftali, Bergamot. Orta: Yasemin, Tüberoz, Frezya, Gül, Orkide, Menekşe, Erik. Alt: Misk, Vanilya, Sedir, Böğürtlen.",
     price: "50 ML 600 TL",
     isOutOfStock: false,
-    isPreOrder: false
+    isPreOrder: false,
+    isNew: true,
+    isEditorsPick: true
   },
   {
     name: "Maison Martin Margiela Lazy Sunday Morning",
@@ -443,7 +465,8 @@ const perfumes: Perfume[] = [
     notes: "Üst: Aldehitler, Vadideki Zambak, Armut. Orta: Gül, İris, Portakal Çiçeği. Alt: Beyaz Misk, Ambrette, Paçuli.",
     price: "50 ML 600 TL",
     isOutOfStock: false,
-    isPreOrder: false
+    isPreOrder: false,
+    isNew: true
   },
   {
     name: "Rasasi Rumz Al Rasasi 9325 Pour Lui",
@@ -453,7 +476,8 @@ const perfumes: Perfume[] = [
     notes: "Üst: Ananas, Lime, Limon, Bergamot, Karabiber. Orta: Yasemin, Vadideki Zambak, Frezya. Alt: Ambergis, Sedir, Deri, Beyaz Misk, Meşe Yosunu.",
     price: "50 ML 600 TL",
     isOutOfStock: false,
-    isPreOrder: false
+    isPreOrder: false,
+    isNew: true
   },
   {
     name: "Xerjoff 1861 Renaissance",
@@ -463,7 +487,9 @@ const perfumes: Perfume[] = [
     notes: "Üst: Amalfi Limonu, Mandalina, Bergamot, Petitgrain. Orta: Nane, Vadideki Zambak, Gül. Alt: Misk, Virjinya Sediri, Paçuli, Amber.",
     price: "50 ML 600 TL",
     isOutOfStock: false,
-    isPreOrder: false
+    isPreOrder: false,
+    isNew: true,
+    isEditorsPick: true
   },
 ];
 
@@ -687,6 +713,10 @@ export default function Home() {
                     <span className="absolute rounded bg-red-600 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-lg">
                       Tükendi
                     </span>
+                  ) : perfume.isNew ? (
+                    <span className="absolute rounded bg-[#e2543f] px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-lg">
+                      Yeni
+                    </span>
                   ) : null}
                 </div>
 
@@ -698,6 +728,20 @@ export default function Home() {
                     <h3 className="mt-3 text-xl font-bold leading-snug text-white">
                       {perfume.name}
                     </h3>
+                    {(perfume.isEditorsPick || perfume.isBestSeller) && (
+                      <div className="mt-2 flex flex-wrap gap-1.5">
+                        {perfume.isEditorsPick ? (
+                          <span className="rounded-full border border-[#f3dfb8]/40 bg-[#f3dfb8]/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#f3dfb8]">
+                            Parfümörün Tavsiyesi
+                          </span>
+                        ) : null}
+                        {perfume.isBestSeller ? (
+                          <span className="rounded-full border border-emerald-300/40 bg-emerald-300/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-200">
+                            Çok Satan
+                          </span>
+                        ) : null}
+                      </div>
+                    )}
                   </div>
                   <span
                     className={`shrink-0 rounded-full border px-3 py-1 text-xs font-bold ${genderClasses(
