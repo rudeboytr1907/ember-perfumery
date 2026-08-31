@@ -552,12 +552,12 @@ const perfumeImages: Record<string, string> = {
   "/perfumes/tonka_cola.png",
   "Hermès Terre d'Hermès": "/perfumes/terre.png",
   "Dior Sauvage Elixir": "/perfumes/sauvage_elixir.png",
-  "Dior J'adore": "/perfumes/dior-jadore.png",
+  "Dior J'adore": "/perfumes/dior-jadore.png?v=20260831",
   "Maison Martin Margiela Lazy Sunday Morning": "/perfumes/sundaymorning.png",
   "Rasasi Rumz Al Rasasi 9325 Pour Lui": "/perfumes/zebra.png",
   "Xerjoff 1861 Renaissance": "/perfumes/1861.png",
-  "Rabanne Invictus": "/perfumes/rabanne-invictus.png",
-  "Parfums de Marly Valaya": "/perfumes/parfums-de-marly-valaya-cutout-v2.png",
+  "Rabanne Invictus": "/perfumes/rabanne-invictus.png?v=20260831",
+  "Parfums de Marly Valaya": "/perfumes/parfums-de-marly-valaya-cutout-v2.png?v=20260831",
 };
 
 type CatalogFilter = Gender | "Tümü" | "Yeni Gelenler";
@@ -955,6 +955,7 @@ export default function Home() {
                     src={perfumeImages[perfume.name]}
                     alt={`${perfume.name} parfüm şişesi`}
                     fill
+                    unoptimized={perfumeImages[perfume.name].includes("?v=")}
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
                     className="product-image object-contain p-5"
                   />
