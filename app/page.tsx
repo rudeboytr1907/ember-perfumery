@@ -2,6 +2,11 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
+import {
+  EMBEDDED_INVICTUS_IMAGE,
+  EMBEDDED_JADORE_IMAGE,
+  EMBEDDED_VALAYA_IMAGE,
+} from "./embeddedPerfumeImages";
 
 type Gender = "Kadın" | "Erkek" | "Unisex";
 
@@ -552,12 +557,12 @@ const perfumeImages: Record<string, string> = {
   "/perfumes/tonka_cola.png",
   "Hermès Terre d'Hermès": "/perfumes/terre.png",
   "Dior Sauvage Elixir": "/perfumes/sauvage_elixir.png",
-  "Dior J'adore": "/perfumes/dior-jadore.png?v=20260831",
+  "Dior J'adore": EMBEDDED_JADORE_IMAGE,
   "Maison Martin Margiela Lazy Sunday Morning": "/perfumes/sundaymorning.png",
   "Rasasi Rumz Al Rasasi 9325 Pour Lui": "/perfumes/zebra.png",
   "Xerjoff 1861 Renaissance": "/perfumes/1861.png",
-  "Rabanne Invictus": "/perfumes/rabanne-invictus.png?v=20260831",
-  "Parfums de Marly Valaya": "/perfumes/parfums-de-marly-valaya-cutout-v2.png?v=20260831",
+  "Rabanne Invictus": EMBEDDED_INVICTUS_IMAGE,
+  "Parfums de Marly Valaya": EMBEDDED_VALAYA_IMAGE,
 };
 
 type CatalogFilter = Gender | "Tümü" | "Yeni Gelenler";
@@ -597,7 +602,9 @@ const structuredData = {
       "@type": "Product",
       name: perfume.name,
       category: `${perfume.gender} parfüm`,
-      image: perfumeImages[perfume.name],
+      image: perfumeImages[perfume.name].startsWith("data:")
+        ? undefined
+        : perfumeImages[perfume.name],
       sameAs: perfume.fragrantica,
       offers: {
         "@type": "Offer",
@@ -955,7 +962,7 @@ export default function Home() {
                     src={perfumeImages[perfume.name]}
                     alt={`${perfume.name} parfüm şişesi`}
                     fill
-                    unoptimized={perfumeImages[perfume.name].includes("?v=")}
+                    unoptimized={perfumeImages[perfume.name].startsWith("data:")}
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
                     className="product-image object-contain p-5"
                   />
