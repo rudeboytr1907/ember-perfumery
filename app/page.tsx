@@ -370,8 +370,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: deniz tuzu, zencefil. Orta: deniz yosunu, vetiver. Alt: sedir ağacı, meşe yosunu.",
     price: "50 ML 600 TL",  
-    isOutOfStock: true,
-    isPreOrder: true
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Amouage Sindbad",
@@ -381,8 +381,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: bergamot, mandalina, tarçın. Orta: tütsü, sardunya, gül. Alt: ambergris, sandal ağacı, meşe yosunu, deri.",
     price: "50 ML 750 TL",
-    isOutOfStock: true,
-    isPreOrder: true
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Victoria's Secret Tease",
@@ -392,8 +392,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: armut, mandalina, litchi, kırmızı elma. Orta: gardenya, tatlı bezelye, yasemin, frezya, manolya. Alt: vanilya, benzoin, misk, çikolata, amber, sandal ağacı.",
     price: "50 ML 600 TL",
-    isOutOfStock: true,
-    isPreOrder: true
+    isOutOfStock: false,
+    isPreOrder: false
   },
   {
     name: "Tom Ford Black Orchid",
