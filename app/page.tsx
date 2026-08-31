@@ -818,27 +818,27 @@ export default function Home() {
       <section className="ember-hero relative border-b border-[#bd8b50]/30">
         <div className="ember-smoke ember-smoke-left" />
         <div className="ember-smoke ember-smoke-right" />
-        <div className="relative mx-auto grid min-h-[560px] max-w-[1440px] items-center gap-6 px-5 py-14 md:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-12 lg:py-10">
+        <div className="relative mx-auto grid min-h-[440px] max-w-[1440px] items-center gap-4 px-5 py-10 md:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:px-12 lg:py-5">
           <div className="relative z-10 max-w-2xl text-center lg:text-left">
-            <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-[#c6975c]/25 bg-black/15 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#e8c894]">
+            <div className="mb-4 inline-flex items-center gap-3 rounded-full border border-[#c6975c]/25 bg-black/15 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#e8c894]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#e2543f] shadow-[0_0_12px_#e2543f]" />
               {perfumes.length} seçili koku
             </div>
-            <h1 className="font-display text-4xl font-medium leading-[1.02] text-[#fffaf1] sm:text-5xl md:text-6xl xl:text-7xl">
+            <h1 className="font-display text-4xl font-medium leading-[1.02] text-[#fffaf1] sm:text-5xl xl:text-6xl">
               <span className="text-[#efc98f]">Özenle seçilmiş</span>
               <br />
               kokuların izini sürün.
             </h1>
-            <div className="mx-auto mt-7 flex w-44 items-center gap-3 text-[#c99b61] lg:mx-0">
+            <div className="mx-auto mt-5 flex w-40 items-center gap-3 text-[#c99b61] lg:mx-0">
               <span className="h-px flex-1 bg-current" />
               <span className="h-2 w-2 rotate-45 border border-current" />
               <span className="h-px flex-1 bg-current" />
             </div>
-            <p className="mx-auto mt-7 max-w-xl text-sm leading-7 text-[#bbb4a8] sm:text-base lg:mx-0">
+            <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-[#bbb4a8] sm:text-base lg:mx-0">
               Kadın, erkek ve unisex kokular arasından size eşlik edecek imzayı
               bulun. Stok ve ürün detayları için bize kolayca ulaşın.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
+            <div className="mt-6 flex flex-wrap justify-center gap-3 lg:justify-start">
               <a href="#catalog" className="ember-button-primary">
                 Kataloğu İncele <span aria-hidden="true">→</span>
               </a>
@@ -856,7 +856,7 @@ export default function Home() {
               width={620}
               height={620}
               preload
-              className="hero-logo relative z-10 w-full max-w-[430px] object-contain drop-shadow-[0_25px_65px_rgba(0,0,0,0.55)] lg:max-w-[590px]"
+              className="hero-logo relative z-10 w-full max-w-[330px] object-contain drop-shadow-[0_25px_65px_rgba(0,0,0,0.55)] sm:max-w-[380px] lg:max-w-[470px]"
             />
           </div>
         </div>
