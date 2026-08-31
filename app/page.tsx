@@ -11,8 +11,9 @@ type Perfume = {
   fragrantica: string;
   notes: string;
   price?: string;
-  isOutOfStock?: boolean; 
-  isPreOrder?: boolean; // Ön sipariş alanı eklendi
+  isOutOfStock?: boolean;
+  isPreOrder?: boolean;
+  isNew?: boolean;
 };
 
 const whatsappNumber = "905382982055";
@@ -370,8 +371,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: deniz tuzu, zencefil. Orta: deniz yosunu, vetiver. Alt: sedir ağacı, meşe yosunu.",
     price: "50 ML 600 TL",  
-    isOutOfStock: false,
-    isPreOrder: false
+    isOutOfStock: true,
+    isPreOrder: true
   },
   {
     name: "Amouage Sindbad",
@@ -381,8 +382,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: bergamot, mandalina, tarçın. Orta: tütsü, sardunya, gül. Alt: ambergris, sandal ağacı, meşe yosunu, deri.",
     price: "50 ML 750 TL",
-    isOutOfStock: false,
-    isPreOrder: false
+    isOutOfStock: true,
+    isPreOrder: true
   },
   {
     name: "Victoria's Secret Tease",
@@ -392,8 +393,8 @@ const perfumes: Perfume[] = [
     notes:
       "Üst: armut, mandalina, litchi, kırmızı elma. Orta: gardenya, tatlı bezelye, yasemin, frezya, manolya. Alt: vanilya, benzoin, misk, çikolata, amber, sandal ağacı.",
     price: "50 ML 600 TL",
-    isOutOfStock: false,
-    isPreOrder: false
+    isOutOfStock: true,
+    isPreOrder: true
   },
   {
     name: "Tom Ford Black Orchid",
@@ -476,6 +477,7 @@ const perfumes: Perfume[] = [
     price: "50 ML 700 TL",
     isOutOfStock: false,
     isPreOrder: false,
+    isNew: true,
   },
   {
     name: "Parfums de Marly Valaya",
@@ -487,6 +489,7 @@ const perfumes: Perfume[] = [
     price: "50 ML 700 TL",
     isOutOfStock: false,
     isPreOrder: false,
+    isNew: true,
   },
 ];
 
@@ -549,15 +552,38 @@ const perfumeImages: Record<string, string> = {
   "/perfumes/tonka_cola.png",
   "Hermès Terre d'Hermès": "/perfumes/terre.png",
   "Dior Sauvage Elixir": "/perfumes/sauvage_elixir.png",
-  "Dior J'adore": "/perfumes/dior-jadore.jpg",
+  "Dior J'adore": "/perfumes/dior-jadore.png",
   "Maison Martin Margiela Lazy Sunday Morning": "/perfumes/sundaymorning.png",
   "Rasasi Rumz Al Rasasi 9325 Pour Lui": "/perfumes/zebra.png",
   "Xerjoff 1861 Renaissance": "/perfumes/1861.png",
-  "Rabanne Invictus": "/perfumes/rabanne-invictus.jpg",
-  "Parfums de Marly Valaya": "/perfumes/parfums-de-marly-valaya.jpg",
+  "Rabanne Invictus": "/perfumes/rabanne-invictus.png",
+  "Parfums de Marly Valaya": "/perfumes/parfums-de-marly-valaya-cutout-v2.png",
 };
 
-const filters: Array<Gender | "Tümü"> = ["Tümü", "Kadın", "Erkek", "Unisex"];
+type CatalogFilter = Gender | "Tümü" | "Yeni Gelenler";
+type ScentFamily =
+  | "Odunsu"
+  | "Çiçeksi"
+  | "Deniz"
+  | "Tatlı"
+  | "Baharatlı"
+  | "Narenciye";
+
+const catalogFilters: CatalogFilter[] = [
+  "Tümü",
+  "Kadın",
+  "Erkek",
+  "Unisex",
+  "Yeni Gelenler",
+];
+const scentFamilies: ScentFamily[] = [
+  "Odunsu",
+  "Çiçeksi",
+  "Deniz",
+  "Tatlı",
+  "Baharatlı",
+  "Narenciye",
+];
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -585,263 +611,390 @@ const structuredData = {
   })),
 };
 
+function getScentFamilies(notes: string): ScentFamily[] {
+  const normalized = notes.toLocaleLowerCase("tr-TR");
+  const matches: ScentFamily[] = [];
+  const includesAny = (terms: string[]) =>
+    terms.some((term) => normalized.includes(term));
+
+  if (
+    includesAny([
+      "sandal",
+      "sedir",
+      "vetiver",
+      "paçuli",
+      "öd ağacı",
+      "guaiac",
+      "meşe yosunu",
+      "odunsu",
+      "akigalawood",
+    ])
+  )
+    matches.push("Odunsu");
+  if (
+    includesAny([
+      "gül",
+      "yasemin",
+      "çiçek",
+      "zambak",
+      "menekşe",
+      "gardenya",
+      "orkide",
+      "frezya",
+      "nergi",
+    ])
+  )
+    matches.push("Çiçeksi");
+  if (includesAny(["deniz", "su notaları", "tuz", "ozonik", "calone"]))
+    matches.push("Deniz");
+  if (
+    includesAny([
+      "vanilya",
+      "karamel",
+      "şeker",
+      "çikolata",
+      "bal",
+      "tonka",
+      "marshmallow",
+      "dondurma",
+    ])
+  )
+    matches.push("Tatlı");
+  if (
+    includesAny([
+      "biber",
+      "tarçın",
+      "kakule",
+      "muskat",
+      "safran",
+      "karanfil",
+      "baharat",
+      "zencefil",
+    ])
+  )
+    matches.push("Baharatlı");
+  if (
+    includesAny([
+      "bergamot",
+      "limon",
+      "mandalina",
+      "portakal",
+      "greyfurt",
+      "misket limonu",
+      "narenciye",
+    ])
+  )
+    matches.push("Narenciye");
+
+  return matches.length ? matches : ["Odunsu"];
+}
+
 function genderClasses(gender: Gender) {
-  if (gender === "Kadın") {
-    return "border-rose-300/40 bg-rose-300/12 text-rose-100";
-  }
+  if (gender === "Kadın") return "gender-women";
+  if (gender === "Erkek") return "gender-men";
+  return "gender-unisex";
+}
 
-  if (gender === "Erkek") {
-    return "border-sky-300/40 bg-sky-300/12 text-sky-100";
-  }
+function SearchIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5">
+      <path
+        d="m21 21-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="1.7"
+      />
+    </svg>
+  );
+}
 
-  return "border-emerald-300/40 bg-emerald-300/12 text-emerald-100";
+function WhatsAppIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5">
+      <path
+        d="M20.5 11.7a8.5 8.5 0 0 1-12.58 7.46L3 20.5l1.3-4.77A8.5 8.5 0 1 1 20.5 11.7Z"
+        fill="none"
+        stroke="currentColor"
+        strokeLinejoin="round"
+        strokeWidth="1.7"
+      />
+      <path
+        d="M8.3 7.7c.3-.3.75-.18.94.15l1.05 1.82c.14.25.11.56-.08.77l-.66.72c.7 1.45 1.8 2.55 3.28 3.22l.7-.66c.22-.2.54-.23.79-.07l1.76 1.08c.34.2.44.65.2.95-.5.64-1.26 1.03-2.08.96-3.75-.31-6.68-3.25-7-7-.06-.74.3-1.45 1.1-1.94Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
 }
 
 export default function Home() {
   const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState<Gender | "Tümü">("Tümü");
+  const [catalogFilter, setCatalogFilter] =
+    useState<CatalogFilter>("Tümü");
+  const [scentFilter, setScentFilter] = useState<ScentFamily | "">("");
   const [visibleCount, setVisibleCount] = useState(itemsPerPage);
 
   const filteredPerfumes = useMemo(() => {
     const query = search.trim().toLocaleLowerCase("tr-TR");
 
     return perfumes.filter((perfume) => {
-      const searchableText =
-        `${perfume.name} ${perfume.gender} ${perfume.notes}`.toLocaleLowerCase(
-          "tr-TR"
-        );
-
+      const families = getScentFamilies(perfume.notes);
+      const searchableText = `${perfume.name} ${perfume.gender} ${perfume.notes} ${families.join(
+        " "
+      )}`.toLocaleLowerCase("tr-TR");
       const matchesSearch = query ? searchableText.includes(query) : true;
-      const matchesFilter = filter === "Tümü" ? true : perfume.gender === filter;
+      const matchesCatalog =
+        catalogFilter === "Tümü"
+          ? true
+          : catalogFilter === "Yeni Gelenler"
+            ? perfume.isNew
+            : perfume.gender === catalogFilter;
+      const matchesScent = scentFilter
+        ? families.includes(scentFilter)
+        : true;
 
-      return matchesSearch && matchesFilter;
+      return matchesSearch && matchesCatalog && matchesScent;
     });
-  }, [filter, search]);
+  }, [catalogFilter, scentFilter, search]);
 
   const visiblePerfumes = filteredPerfumes.slice(0, visibleCount);
   const hasMorePerfumes = visibleCount < filteredPerfumes.length;
+  const hasActiveFilters =
+    search.length > 0 || catalogFilter !== "Tümü" || scentFilter !== "";
 
-  const totals = {
-    all: perfumes.length,
-    women: perfumes.filter((perfume) => perfume.gender === "Kadın").length,
-    men: perfumes.filter((perfume) => perfume.gender === "Erkek").length,
-    unisex: perfumes.filter((perfume) => perfume.gender === "Unisex").length,
+  const setCategory = (value: CatalogFilter) => {
+    setCatalogFilter(value);
+    setVisibleCount(itemsPerPage);
   };
 
+  const showNewArrivals = () => {
+    setCategory("Yeni Gelenler");
+    document.getElementById("catalog")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const generalWhatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    "Merhaba, parfüm seçenekleri hakkında bilgi almak istiyorum."
+  )}`;
+
   return (
-    <main className="min-h-screen overflow-hidden bg-[#101615] text-stone-50">
+    <main id="top" className="min-h-screen overflow-hidden bg-[#07110f] text-[#f8f1e4]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <a
         href="#catalog"
-        className="sr-only z-50 rounded bg-white px-4 py-3 text-black focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        className="sr-only z-[100] rounded bg-[#f4dfb6] px-4 py-3 text-black focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
       >
         Kataloğa geç
       </a>
-      <section className="relative border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_28%,rgba(201,72,55,0.22),transparent_30%),radial-gradient(circle_at_18%_15%,rgba(244,231,190,0.14),transparent_26%),linear-gradient(120deg,rgba(35,48,47,0.92),rgba(16,22,21,0.98))]" />
-        <div className="relative mx-auto grid min-h-[48vh] max-w-7xl items-center gap-8 px-5 py-6 md:grid-cols-[0.95fr_1.05fr] md:px-8 md:py-8">
-          <div className="max-w-2xl">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[#f3dfb8]">
-              Ember Perfumery
-            </p>
-            <h1 className="text-2xl font-bold leading-tight text-white md:text-4xl">
-              Özenle seçilmiş parfümleri keşfedin.
+
+      <header className="sticky top-0 z-50 border-b border-[#bd8b50]/25 bg-[#07110f]/92 backdrop-blur-xl">
+        <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-5 md:px-8 lg:px-12">
+          <a href="#top" className="flex items-center gap-3" aria-label="Ember Perfumery ana sayfa">
+            <Image src="/ember-logo.png" alt="" width={38} height={38} className="h-9 w-9 object-contain" />
+            <span className="font-display text-base font-semibold tracking-[0.08em] text-[#f4dfb6] sm:text-lg">
+              EMBER PERFUMERY
+            </span>
+          </a>
+          <nav aria-label="Ana menü" className="hidden items-center gap-8 lg:flex">
+            <a href="#catalog" className="nav-link">Katalog</a>
+            <button type="button" onClick={showNewArrivals} className="nav-link">Yeni Gelenler</button>
+            <a href="#families" className="nav-link">Koku Aileleri</a>
+            <a href="#contact" className="nav-link">İletişim</a>
+          </nav>
+          <a
+            href={generalWhatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="header-contact"
+          >
+            <WhatsAppIcon />
+            <span className="hidden sm:inline">WhatsApp</span>
+          </a>
+        </div>
+      </header>
+
+      <section className="ember-hero relative border-b border-[#bd8b50]/30">
+        <div className="ember-smoke ember-smoke-left" />
+        <div className="ember-smoke ember-smoke-right" />
+        <div className="relative mx-auto grid min-h-[560px] max-w-[1440px] items-center gap-6 px-5 py-14 md:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-12 lg:py-10">
+          <div className="relative z-10 max-w-2xl text-center lg:text-left">
+            <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-[#c6975c]/25 bg-black/15 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#e8c894]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#e2543f] shadow-[0_0_12px_#e2543f]" />
+              {perfumes.length} seçili koku
+            </div>
+            <h1 className="font-display text-4xl font-medium leading-[1.02] text-[#fffaf1] sm:text-5xl md:text-6xl xl:text-7xl">
+              <span className="text-[#efc98f]">Özenle seçilmiş</span>
+              <br />
+              kokuların izini sürün.
             </h1>
-            <p className="mt-4 max-w-xl text-sm leading-7 text-stone-300 md:text-base">
-              Kadın, erkek ve unisex kokular arasından beğendiğiniz ürün için
-              WhatsApp üzerinden hızlıca bilgi alabilirsiniz.
+            <div className="mx-auto mt-7 flex w-44 items-center gap-3 text-[#c99b61] lg:mx-0">
+              <span className="h-px flex-1 bg-current" />
+              <span className="h-2 w-2 rotate-45 border border-current" />
+              <span className="h-px flex-1 bg-current" />
+            </div>
+            <p className="mx-auto mt-7 max-w-xl text-sm leading-7 text-[#bbb4a8] sm:text-base lg:mx-0">
+              Kadın, erkek ve unisex kokular arasından size eşlik edecek imzayı
+              bulun. Stok ve ürün detayları için bize kolayca ulaşın.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href="#catalog"
-                className="rounded-full bg-[#e2543f] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#f06b55]"
-              >
-                Kataloğu İncele
+            <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
+              <a href="#catalog" className="ember-button-primary">
+                Kataloğu İncele <span aria-hidden="true">→</span>
               </a>
-              <a
-                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-                  "Merhaba, parfüm seçenekleri hakkında bilgi almak istiyorum."
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full border border-[#f3dfb8]/35 px-6 py-3 text-sm font-bold text-white transition hover:border-[#f3dfb8] hover:text-[#f3dfb8]"
-              >
-                WhatsApp
+              <a href={generalWhatsappUrl} target="_blank" rel="noopener noreferrer" className="ember-button-secondary">
+                <WhatsAppIcon /> WhatsApp
               </a>
             </div>
           </div>
 
-          <div className="relative mx-auto flex w-full max-w-xl items-center justify-center">
-            <div className="absolute h-[72%] w-[72%] rounded-full bg-[#e2543f]/18 blur-3xl" />
+          <div className="relative mx-auto flex w-full max-w-[650px] items-center justify-center lg:justify-end">
+            <div className="absolute h-[72%] w-[72%] rounded-full bg-[#d64b36]/18 blur-[90px]" />
             <Image
               src="/ember-logo.png"
               alt="Ember Perfumery logosu"
-              width={420}
-              height={420}
+              width={620}
+              height={620}
               preload
-              className="relative z-10 w-full max-w-[360px] drop-shadow-[0_22px_48px_rgba(0,0,0,0.38)] md:max-w-[420px]"
+              className="hero-logo relative z-10 w-full max-w-[430px] object-contain drop-shadow-[0_25px_65px_rgba(0,0,0,0.55)] lg:max-w-[590px]"
             />
           </div>
         </div>
       </section>
 
-      <section id="catalog" className="mx-auto max-w-7xl px-5 py-10 md:px-8">
-        <div className="mb-7 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <section id="catalog" className="mx-auto max-w-[1440px] scroll-mt-20 px-5 py-12 md:px-8 lg:px-12">
+        <div className="mb-7 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <h2 className="text-3xl font-bold text-white">Parfüm Kataloğu</h2>
-            <p className="mt-2 text-sm text-stone-400">
-              {totals.all} ürün: {totals.women} kadın, {totals.men} erkek,{" "}
-              {totals.unisex} unisex.
+            <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#c89a61]">Koleksiyonu keşfet</p>
+            <h2 className="font-display text-4xl font-medium text-[#fff9ee] md:text-5xl">Parfüm Kataloğu</h2>
+            <p className="mt-3 text-sm text-[#878982]">
+              {filteredPerfumes.length} ürün seçiminizle eşleşiyor.
             </p>
           </div>
-
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <div>
-              <label htmlFor="perfume-search" className="sr-only">
-                Parfüm adı veya nota ara
-              </label>
-              <input
-                id="perfume-search"
-                type="search"
-                placeholder="Parfüm adı veya nota ara"
-                className="h-12 w-full rounded-lg border border-white/12 bg-white/6 px-4 text-sm text-white outline-none transition placeholder:text-stone-500 focus:border-[#e2543f] focus-visible:ring-2 focus-visible:ring-[#e2543f]/40 sm:w-72"
-                value={search}
-                onChange={(event) => {
-                  setSearch(event.target.value);
-                  setVisibleCount(itemsPerPage);
-                }}
-              />
-            </div>
-            <div>
-              <label htmlFor="gender-filter" className="sr-only">
-                Cinsiyete göre filtrele
-              </label>
-              <select
-                id="gender-filter"
-                className="h-12 w-full rounded-lg border border-white/12 bg-white/6 px-4 text-sm text-white outline-none transition focus:border-[#e2543f] focus-visible:ring-2 focus-visible:ring-[#e2543f]/40 sm:w-auto"
-                value={filter}
-                onChange={(event) => {
-                  setFilter(event.target.value as Gender | "Tümü");
-                  setVisibleCount(itemsPerPage);
-                }}
-              >
-                {filters.map((item) => (
-                  <option key={item} className="bg-stone-950">
-                    {item}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <div className="relative w-full lg:max-w-sm">
+            <label htmlFor="perfume-search" className="sr-only">Parfüm adı veya nota ara</label>
+            <input
+              id="perfume-search"
+              type="search"
+              placeholder="Parfüm adı veya nota ara..."
+              className="catalog-search"
+              value={search}
+              onChange={(event) => {
+                setSearch(event.target.value);
+                setVisibleCount(itemsPerPage);
+              }}
+            />
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#c89a61]">
+              <SearchIcon />
+            </span>
           </div>
         </div>
 
-        <p className="sr-only" aria-live="polite">
-          {filteredPerfumes.length} parfüm bulundu.
-        </p>
+        <div className="filter-panel">
+          <div className="filter-scroll" aria-label="Katalog kategorileri">
+            {catalogFilters.map((item) => (
+              <button
+                key={item}
+                type="button"
+                onClick={() => setCategory(item)}
+                aria-pressed={catalogFilter === item}
+                className={`filter-chip ${catalogFilter === item ? "filter-chip-active" : ""}`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+          <div id="families" className="filter-divider" />
+          <div className="filter-scroll" aria-label="Koku aileleri">
+            {scentFamilies.map((family) => (
+              <button
+                key={family}
+                type="button"
+                onClick={() => {
+                  setScentFilter((current) => (current === family ? "" : family));
+                  setVisibleCount(itemsPerPage);
+                }}
+                aria-pressed={scentFilter === family}
+                className={`scent-chip ${scentFilter === family ? "scent-chip-active" : ""}`}
+              >
+                <span className="scent-gem" aria-hidden="true" /> {family}
+              </button>
+            ))}
+          </div>
+          {hasActiveFilters ? (
+            <button
+              type="button"
+              className="clear-filter"
+              onClick={() => {
+                setSearch("");
+                setCatalogFilter("Tümü");
+                setScentFilter("");
+                setVisibleCount(itemsPerPage);
+              }}
+            >
+              Temizle
+            </button>
+          ) : null}
+        </div>
 
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <p className="sr-only" aria-live="polite">{filteredPerfumes.length} parfüm bulundu.</p>
+
+        <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {visiblePerfumes.map((perfume) => {
-            const baseMessage = perfume.isPreOrder 
+            const families = getScentFamilies(perfume.notes);
+            const baseMessage = perfume.isPreOrder
               ? `Merhaba, ön siparişe açık olan ${perfume.name} ürünü için ön sipariş oluşturmak istiyorum.`
               : `Merhaba, ${perfume.name} hakkında bilgi almak istiyorum.`;
-
             const message = encodeURIComponent(baseMessage);
 
             return (
-              <article
-                key={perfume.name}
-                className={`flex min-h-[430px] flex-col rounded-lg border border-white/10 bg-white/[0.045] p-5 shadow-xl shadow-black/12 transition ${
-                  perfume.isOutOfStock && !perfume.isPreOrder ? "opacity-60" : "hover:border-[#e2543f]/70"
-                }`}
-              >
-                <div className="relative mb-5 flex h-48 items-center justify-center rounded-lg border border-white/10 bg-[#f3dfb8]/8 p-4">
+              <article key={perfume.name} className={`perfume-card group ${perfume.isOutOfStock && !perfume.isPreOrder ? "perfume-card-muted" : ""}`}>
+                <div className="product-stage">
+                  <div className="product-glow" />
                   <Image
                     src={perfumeImages[perfume.name]}
                     alt={`${perfume.name} parfüm şişesi`}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                    className="object-contain p-4 drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)]"
+                    className="product-image object-contain p-5"
                   />
-                  {perfume.isPreOrder ? (
-                    <span className="absolute rounded bg-amber-500 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-black shadow-lg">
-                      Ön Sipariş
-                    </span>
-                  ) : perfume.isOutOfStock ? (
-                    <span className="absolute rounded bg-red-600 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-lg">
-                      Tükendi
-                    </span>
-                  ) : null}
-                </div>
-
-                <div className="mb-5 flex items-start justify-between gap-3">
-                  <div>
-                    <h3 className="text-xl font-bold leading-snug text-white">
-                      {perfume.name}
-                    </h3>
+                  <div className="absolute left-3 top-3 flex gap-2">
+                    {perfume.isNew ? <span className="status-badge status-new">Yeni</span> : null}
                   </div>
-                  <span
-                    className={`shrink-0 rounded-full border px-3 py-1 text-xs font-bold ${genderClasses(
-                      perfume.gender
-                    )}`}
-                  >
-                    {perfume.gender}
+                  <span className={`status-badge absolute right-3 top-3 ${perfume.isPreOrder ? "status-preorder" : perfume.isOutOfStock ? "status-out" : "status-stock"}`}>
+                    <span className="status-dot" />
+                    {perfume.isPreOrder ? "Ön Sipariş" : perfume.isOutOfStock ? "Tükendi" : "Stokta"}
                   </span>
                 </div>
 
-                <div className="mt-4 rounded-lg border border-white/10 bg-black/15 px-4 py-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#f3dfb8]">
-                    Notalar
-                  </p>
-                  <p className="mt-2 text-sm text-stone-300">
-                    {perfume.notes}
-                  </p>
-                </div>
+                <div className="flex flex-1 flex-col p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="font-display text-xl font-semibold leading-tight text-[#fff7e8]">{perfume.name}</h3>
+                    <span className={`gender-badge ${genderClasses(perfume.gender)}`}>{perfume.gender}</span>
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {families.slice(0, 3).map((family) => (
+                      <span key={family} className="family-tag">{family}</span>
+                    ))}
+                  </div>
+                  <p className="note-clamp mt-4 text-xs leading-5 text-[#9ea19a]">{perfume.notes}</p>
 
-                <div className="mt-auto pt-7">
-                  <p className={`text-2xl font-bold ${perfume.isOutOfStock && !perfume.isPreOrder ? "text-stone-500 line-through" : "text-[#f3dfb8]"}`}>
-                    {perfume.price ?? "50 ML 600 TL"}
-                  </p>
-                  <div className="mt-5 grid grid-cols-2 gap-3">
-                    <a
-                      href={perfume.fragrantica}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${perfume.name} parfüm detaylarını incele`}
-                      className="rounded-lg border border-white/12 px-4 py-3 text-center text-sm font-bold text-white transition hover:border-[#f3dfb8] hover:text-[#f3dfb8]"
-                    >
-                      İncele
-                    </a>
-                    {perfume.isPreOrder ? (
-                      <a
-                        href={`https://wa.me/${whatsappNumber}?text=${message}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${perfume.name} için ön sipariş ver`}
-                        className="rounded-lg bg-amber-500 px-4 py-3 text-center text-sm font-bold text-amber-950 transition hover:bg-amber-400"
-                      >
-                        Ön Sipariş
+                  <div className="mt-auto border-t border-[#b8894f]/20 pt-4">
+                    <p className={`font-display text-2xl font-semibold tracking-wide ${perfume.isOutOfStock && !perfume.isPreOrder ? "text-stone-600 line-through" : "text-[#efcd96]"}`}>
+                      {perfume.price ?? "50 ML 600 TL"}
+                    </p>
+                    <div className="mt-4 grid grid-cols-2 gap-2.5">
+                      <a href={perfume.fragrantica} target="_blank" rel="noopener noreferrer" aria-label={`${perfume.name} parfüm detaylarını incele`} className="card-button card-button-ghost">
+                        İncele
                       </a>
-                    ) : perfume.isOutOfStock ? (
-                      <button
-                        disabled
-                        className="cursor-not-allowed rounded-lg bg-stone-700 px-4 py-3 text-center text-sm font-bold text-stone-400"
-                      >
-                        Tükendi
-                      </button>
-                    ) : (
-                      <a
-                        href={`https://wa.me/${whatsappNumber}?text=${message}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${perfume.name} hakkında bilgi al`}
-                        className="rounded-lg bg-emerald-400 px-4 py-3 text-center text-sm font-bold text-emerald-950 transition hover:bg-emerald-300"
-                      >
-                        Bilgi Al
-                      </a>
-                    )}
+                      {perfume.isPreOrder ? (
+                        <a href={`https://wa.me/${whatsappNumber}?text=${message}`} target="_blank" rel="noopener noreferrer" aria-label={`${perfume.name} için ön sipariş ver`} className="card-button card-button-primary">Ön Sipariş <span aria-hidden="true">→</span></a>
+                      ) : perfume.isOutOfStock ? (
+                        <button disabled className="card-button card-button-disabled">Tükendi</button>
+                      ) : (
+                        <a href={`https://wa.me/${whatsappNumber}?text=${message}`} target="_blank" rel="noopener noreferrer" aria-label={`${perfume.name} hakkında bilgi al`} className="card-button card-button-primary">Bilgi Al <span aria-hidden="true">→</span></a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </article>
@@ -850,26 +1003,50 @@ export default function Home() {
         </div>
 
         {filteredPerfumes.length === 0 ? (
-          <div className="mt-8 rounded-lg border border-white/10 bg-white/[0.045] p-6 text-center text-stone-300">
-            Bu aramayla eşleşen parfüm bulunamadı.
+          <div className="mt-8 rounded-2xl border border-[#ba8d55]/25 bg-[#0c1815] p-10 text-center">
+            <p className="font-display text-2xl text-[#f3dfb8]">Bu seçimle eşleşen koku bulunamadı.</p>
+            <button type="button" onClick={() => { setSearch(""); setCatalogFilter("Tümü"); setScentFilter(""); }} className="mt-5 text-sm font-semibold text-[#dfab68] underline underline-offset-4">Filtreleri temizle</button>
           </div>
         ) : null}
 
         {hasMorePerfumes ? (
-          <div className="mt-8 flex flex-col items-center gap-3">
-            <button
-              type="button"
-              onClick={() => setVisibleCount((count) => count + itemsPerPage)}
-              className="rounded-full border border-[#f3dfb8]/35 px-7 py-3 text-sm font-bold text-white transition hover:border-[#f3dfb8] hover:text-[#f3dfb8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e2543f]"
-            >
-              Daha fazla göster
-            </button>
-            <p className="text-xs text-stone-500">
-              {visiblePerfumes.length} / {filteredPerfumes.length} ürün gösteriliyor
-            </p>
+          <div className="mt-10 flex flex-col items-center gap-3">
+            <button type="button" onClick={() => setVisibleCount((count) => count + itemsPerPage)} className="load-more-button">Daha fazla göster <span aria-hidden="true">↓</span></button>
+            <p className="text-xs text-[#686f69]">{visiblePerfumes.length} / {filteredPerfumes.length} ürün gösteriliyor</p>
           </div>
         ) : null}
       </section>
+
+      <footer id="contact" className="border-t border-[#bd8b50]/25 bg-[#050c0b]">
+        <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-12 md:grid-cols-[1.2fr_0.8fr_0.8fr] md:px-8 lg:px-12">
+          <div className="max-w-sm">
+            <div className="flex items-center gap-4">
+              <Image src="/ember-logo.png" alt="" width={58} height={58} className="h-14 w-14 object-contain" />
+              <p className="font-display text-xl font-semibold tracking-[0.06em] text-[#efd5a9]">EMBER PERFUMERY</p>
+            </div>
+            <p className="mt-4 text-sm leading-6 text-[#777d76]">Özenle seçilmiş kokular, sade bir keşif deneyimi.</p>
+          </div>
+          <div>
+            <p className="footer-title">Keşfet</p>
+            <div className="mt-4 flex flex-col gap-3 text-sm text-[#858b84]">
+              <a href="#catalog" className="footer-link">Katalog</a>
+              <button type="button" onClick={showNewArrivals} className="footer-link text-left">Yeni Gelenler</button>
+              <a href="#families" className="footer-link">Koku Aileleri</a>
+            </div>
+          </div>
+          <div>
+            <p className="footer-title">Bize ulaşın</p>
+            <a href={generalWhatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-3 text-sm text-[#b7b9b2] transition hover:text-[#efc98f]">
+              <WhatsAppIcon /> +90 538 298 20 55
+            </a>
+          </div>
+        </div>
+        <div className="border-t border-white/[0.06] px-5 py-5 text-center text-xs text-[#535a55]">© 2026 Ember Perfumery</div>
+      </footer>
+
+      <a href={generalWhatsappUrl} target="_blank" rel="noopener noreferrer" className="floating-whatsapp" aria-label="WhatsApp üzerinden Ember Perfumery ile iletişime geç">
+        <WhatsAppIcon />
+      </a>
     </main>
   );
 }
